@@ -1,14 +1,20 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import RepositorySelector from "./RepositorySelector";
+import RepositoryDetails from "./RepositoryDetails";
 
 function App() {
-  
   return (
-    <div>
-      <h1>Main page</h1>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<RepositorySelector />} />
+          <Route path="/repos/:user/:repo" element={<RepositoryDetails />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

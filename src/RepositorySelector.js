@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const GitHubAPIExample = () => {
+const RepositorySelector = () => {
   const [repositories, setRepositories] = useState([]);
   const [user, setUser] = useState("");
 
@@ -17,7 +18,7 @@ const GitHubAPIExample = () => {
       <h1>Openbare GitHub-repositories</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Kies een gebruiker: 
+          Kies een gebruiker:
           <input
             type="text"
             value={user}
@@ -28,11 +29,14 @@ const GitHubAPIExample = () => {
       </form>
       <ul>
         {repositories.map((repo) => (
-          <li key={repo.id}>{repo.name}, ⭐ {repo.stargazers_count}</li>
+          <li key={repo.id}>
+            <Link to={`/repos/${user}/${repo.name}`}>{repo.name}</Link>, ⭐{" "}
+            {repo.stargazers_count}
+          </li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default GitHubAPIExample;
+export default RepositorySelector;
