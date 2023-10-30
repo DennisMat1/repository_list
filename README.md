@@ -1,4 +1,4 @@
-GithubRepo's
+# GithubRepo's
 
 Dit is een webapplicatie gebouwd met React. Het haalt repository's op uit de GitHub API en stelt gebruikers in staat naar commits in de repository's te zoeken.
 
