@@ -31,7 +31,7 @@ const RepositorySelector = () => {
       <ul>
         {repositories.map((repo) => (
           <div>
-            <Link to={`/repos/${user}/${repo.name}`}>{repo.name}</Link>, ⭐{" "}
+            <Link to={`/repos/${user}/${repo.name}`}>{repo.name}</Link>, ⭐:{" "}
             {repo.stargazers_count}
           </div>
         ))}

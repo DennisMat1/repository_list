@@ -23,7 +23,7 @@ const RepositoryDetails = () => {
   return (
     <div className={styles.background}>
       <h2>
-        Commits for {user}/{repo}
+        Commits voor {user}/{repo}
       </h2>
       <input
         type="text"
