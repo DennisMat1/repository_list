@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-
+import styles from "./RepositoryDetails.module.css";
 const RepositoryDetails = () => {
   const { user, repo } = useParams();
   const [commits, setCommits] = useState([]);
@@ -13,15 +13,15 @@ const RepositoryDetails = () => {
       .then((response) => {
         setCommits(response.data.slice(0, 20));
       });
-  }, [user, repo]);
+  }, [user, repo]); // fetch commits met maximaal 20 resultaten
   const filterCommits = () => {
     return commits.filter((commit) =>
       commit.commit.message.toLowerCase().includes(searchInput.toLowerCase())
-    );
+    ); // zet de commits die je wilt zoeken naar lowercase voor results
   };
 
   return (
-    <div>
+    <div className={styles.background}>
       <h2>
         Commits for {user}/{repo}
       </h2>
@@ -31,10 +31,9 @@ const RepositoryDetails = () => {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-
       <ul>
         {filterCommits().map((commit) => (
-          <li key={commit.sha}>{commit.commit.message}</li>
+          <div key={commit.sha}>-{commit.commit.message} </div>
         ))}
       </ul>
       <Link to="/">Terug naar repositories</Link>
